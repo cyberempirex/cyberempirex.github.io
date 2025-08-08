@@ -1,153 +1,1224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CyberEmpireX - Ethical Hacking Tools</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberEmpireX - Advanced Cybersecurity Solutions</title>
 
   <!-- SEO & Meta -->
-  <meta name="description" content="Free ethical hacking tools, Termux scripts, and cybersecurity resources by CyberEmpireX. Join our Telegram for more.">
-  <meta name="keywords" content="CyberEmpireX, hacking tools, Termux, cybersecurity, scripts, Kali Linux, GitHub Pages">
-  <meta name="author" content="CyberEmpireX">
+  <meta name="description" content="Cutting-edge cybersecurity tools and comprehensive educational resources for ethical hackers and security professionals">
+  <meta name="keywords" content="CyberEmpireX, ethical hacking, cybersecurity, penetration testing, security research, digital forensics">
+  <meta name="author" content="CyberEmpireX Team">
+  <meta name="theme-color" content="#1a365d">
+  <meta property="og:title" content="CyberEmpireX - Advanced Cybersecurity Solutions">
+  <meta property="og:description" content="Professional-grade tools and resources for cybersecurity professionals and ethical hackers">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cyberempirex.github.io">
 
-  <!-- Styling -->
-  <link rel="stylesheet" href="style.css" />
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Styles -->
   <style>
-    /* Built-in CSS for demo */
-    body {
-      background-color: #0d0d0d;
-      color: #00ff99;
-      font-family: 'Courier New', Courier, monospace;
+    :root {
+      /* Professional Dark Blue Color Scheme */
+      --primary: #1a365d;
+      --primary-dark: #15315a;
+      --primary-light: #2c5282;
+      --secondary: #38b2ac;
+      --secondary-dark: #319795;
+      --accent: #ed8936;
+      --accent-dark: #dd6b20;
+      --text: #f7fafc;
+      --text-light: #e2e8f0;
+      --text-lighter: #cbd5e0;
+      --bg: #1a202c;
+      --bg-dark: #2d3748;
+      --card-bg: #2d3748;
+      --border: #4a5568;
+    }
+
+    /* Base Styles */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    code, pre {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--secondary);
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--secondary-dark);
+      text-shadow: 0 0 8px rgba(56, 178, 172, 0.4);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      font-size: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.1) 50%, transparent 75%);
+      background-size: 400% 400%;
+      opacity: 0;
+      transition: all 0.6s ease;
+    }
+
+    .btn:hover::after {
+      opacity: 1;
+      animation: shine 1.5s infinite;
+    }
+
+    @keyframes shine {
+      0% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .btn-primary {
+      background-color: var(--primary-light);
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary);
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--secondary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-accent {
+      background-color: var(--accent);
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-accent:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .text-center {
       text-align: center;
     }
 
-    header {
-      padding: 40px 10px 20px;
-      background-color: #111;
-      border-bottom: 2px solid #00ff99;
+    .text-primary {
+      color: var(--primary-light);
     }
 
-    header h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
+    .text-secondary {
+      color: var(--secondary);
     }
 
-    header p {
-      font-size: 16px;
-      color: #ccc;
+    .text-accent {
+      color: var(--accent);
     }
 
-    .buttons {
-      margin-top: 25px;
+    .bg-primary {
+      background-color: var(--primary);
     }
 
-    .buttons a {
+    .bg-secondary {
+      background-color: var(--secondary);
+    }
+
+    .bg-accent {
+      background-color: var(--accent);
+    }
+
+    .section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
       display: inline-block;
-      background-color: #00ff99;
-      color: #000;
-      padding: 12px 24px;
-      text-decoration: none;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .logo img {
+      height: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover img {
+      transform: rotate(15deg);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--secondary);
+      transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 12rem 0 8rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('assets/cyber-grid.png') center/cover;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    /* Animated Circles in Hero */
+    .hero-circles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .hero-circles li {
+      position: absolute;
+      display: block;
+      list-style: none;
+      width: 20px;
+      height: 20px;
+      background: rgba(56, 178, 172, 0.2);
+      animation: float 25s linear infinite;
+      bottom: -150px;
+      border-radius: 50%;
+    }
+
+    .hero-circles li:nth-child(1) {
+      left: 25%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 0s;
+    }
+
+    .hero-circles li:nth-child(2) {
+      left: 10%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 2s;
+      animation-duration: 12s;
+    }
+
+    .hero-circles li:nth-child(3) {
+      left: 70%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 4s;
+    }
+
+    .hero-circles li:nth-child(4) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 0s;
+      animation-duration: 18s;
+    }
+
+    .hero-circles li:nth-child(5) {
+      left: 65%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 0s;
+    }
+
+    .hero-circles li:nth-child(6) {
+      left: 75%;
+      width: 110px;
+      height: 110px;
+      animation-delay: 3s;
+    }
+
+    .hero-circles li:nth-child(7) {
+      left: 35%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 7s;
+    }
+
+    .hero-circles li:nth-child(8) {
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 15s;
+      animation-duration: 45s;
+    }
+
+    .hero-circles li:nth-child(9) {
+      left: 20%;
+      width: 15px;
+      height: 15px;
+      animation-delay: 2s;
+      animation-duration: 35s;
+    }
+
+    .hero-circles li:nth-child(10) {
+      left: 85%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 0s;
+      animation-duration: 11s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+      }
+    }
+
+    /* Features Section */
+    .features {
+      background-color: var(--bg-dark);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background-color: var(--card-bg);
+      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-align: center;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* Stats Section with Animated Bars */
+    .stats {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 4rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('assets/dots-pattern.png') center/cover;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    .stats-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 0.5rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Skill Bars */
+    .skill-bars {
+      max-width: 800px;
+      margin: 3rem auto 0;
+    }
+
+    .skill-bar {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-name {
+      font-weight: 500;
+    }
+
+    .skill-percent {
+      color: var(--secondary);
+    }
+
+    .skill-progress {
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 5px;
-      font-weight: bold;
-      margin: 10px;
-      transition: 0.3s ease;
+      overflow: hidden;
+      position: relative;
     }
 
-    .buttons a:hover {
-      background-color: #00cc77;
+    .skill-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      border-radius: 5px;
+      position: relative;
+      width: 0;
+      transition: width 1.5s ease-out;
     }
 
-    section {
-      padding: 40px 20px;
+    /* Newsletter */
+    .newsletter {
+      background-color: var(--bg-dark);
+      padding: 4rem 0;
     }
 
-    .tools {
+    .newsletter-container {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 2rem auto 0;
+      background: var(--card-bg);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .newsletter-input:focus {
+      outline: none;
+    }
+
+    .newsletter-btn {
+      padding: 0 1.5rem;
+      background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-btn:hover {
+      background: linear-gradient(135deg, var(--secondary-dark), var(--secondary));
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 4rem 0 2rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+    }
+
+    .footer-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 25px;
-      max-width: 800px;
-      margin: auto;
+      text-align: center;
     }
 
-    .tool-card {
-      background-color: #1a1a1a;
-      padding: 20px;
-      border-left: 5px solid #00ff99;
-      text-align: left;
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .footer-logo img {
+      height: 40px;
+    }
+
+    .footer-about {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .footer-about p {
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+      line-height: 1.8;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+
+    .social-link:hover {
+      background-color: var(--secondary);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 5px 15px rgba(56, 178, 172, 0.3);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      opacity: 0.7;
+      font-size: 0.875rem;
       width: 100%;
-      box-shadow: 0 0 10px #00ff99;
-      border-radius: 5px;
     }
 
-    .tool-card h3 {
-      margin: 0 0 10px;
-      color: #00ffff;
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
     }
 
-    .tool-card p {
-      margin: 0;
-      font-size: 14px;
-      color: #ccc;
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--primary-dark);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero {
+        padding: 9rem 0 5rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-input {
+        border-radius: 0.5rem 0.5rem 0 0;
+        margin-bottom: 0;
+      }
+      
+      .newsletter-btn {
+        border-radius: 0 0 0.5rem 0.5rem;
+        padding: 1rem;
+      }
     }
 
-    footer {
-      padding: 30px 10px;
-      background-color: #111;
-      font-size: 14px;
-      color: #aaa;
-      border-top: 1px solid #00ff99;
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .section {
+        padding: 3rem 0;
+      }
+      
+      .section-title {
+        font-size: 1.75rem;
+      }
+      
+      .stat-number {
+        font-size: 2.5rem;
+      }
     }
 
-    footer a {
-      color: #00ffff;
-      text-decoration: none;
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 1s ease forwards;
+    }
+
+    .slide-in-right {
+      animation: slideInRight 1s ease forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 6px 20px rgba(56, 178, 172, 0.3);
     }
   </style>
 </head>
 <body>
-
-  <!-- Header Section -->
+  <!-- Header -->
   <header>
-    <h1>CyberEmpireX</h1>
-    <p>Master Ethical Hacking | Termux Scripts | Free Tools & Resources</p>
-
-    <div class="buttons">
-      <a href="https://t.me/CyberEmpireXChat" target="_blank">Join Telegram</a>
-      <a href="https://github.com/" target="_blank">Visit GitHub</a>
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <img src="https://i.ibb.co/r2Z4SLn9/Picsart-25-04-04-08-31-24-593.png" alt="CyberEmpireX Logo">
+        <span>CyberEmpireX</span>
+      </a>
+      
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#features">Advantages</a>
+        <a href="#stats">Stats</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </header>
 
-  <!-- Tools Section -->
-  <section>
-    <h2>🚀 Featured Tools</h2>
-    <div class="tools">
-
-      <div class="tool-card">
-        <h3>🔍 Website Vulnerability Scanner</h3>
-        <p>Scan websites for over 15 vulnerabilities using this powerful Termux tool. Fast, light, and reliable.</p>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </div>
+    
+    <div class="container hero-content">
+      <h1 class="fade-in">Advanced Cybersecurity Solutions</h1>
+      <p class="fade-in delay-1">Professional-grade tools and comprehensive educational content for ethical hackers, penetration testers, and security researchers to enhance digital defense capabilities</p>
+      
+      <div class="hero-buttons fade-in delay-2">
+        <a href="#features" class="btn btn-secondary">
+          <i class="fas fa-star"></i> Our Advantages
+        </a>
+        <a href="https://t.me/CyberEmpireXChat" target="_blank" class="btn btn-accent">
+          <i class="fab fa-telegram"></i> Join Community
+        </a>
       </div>
+    </div>
+  </section>
 
-      <div class="tool-card">
-        <h3>📲 Android Payload Generator</h3>
-        <p>Create undetectable payloads for Android in seconds using custom IP, ports, and bind options.</p>
+  <!-- Features Section -->
+  <section id="features" class="section features">
+    <div class="container">
+      <h2 class="section-title slide-in-left">Our Competitive Advantages</h2>
+      <p class="text-center slide-in-left delay-1">What sets CyberEmpireX apart in the cybersecurity landscape</p>
+      
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Advanced Security Protocols</h3>
+          <p>Our tools incorporate cutting-edge security measures and follow strict ethical guidelines to ensure responsible usage.</p>
+        </div>
+        
+        <div class="feature-card fade-in delay-1">
+          <div class="feature-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>Comprehensive Education</h3>
+          <p>Detailed tutorials, documentation, and real-world case studies to accelerate your cybersecurity learning curve.</p>
+        </div>
+        
+        <div class="feature-card fade-in delay-2">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Expert Community</h3>
+          <p>Connect with thousands of security professionals and enthusiasts in our active, knowledge-sharing community.</p>
+        </div>
+        
+        <div class="feature-card fade-in delay-1">
+          <div class="feature-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3>Cutting-Edge Technology</h3>
+          <p>Regularly updated tools leveraging the latest advancements in cybersecurity research and development.</p>
+        </div>
+        
+        <div class="feature-card fade-in delay-2">
+          <div class="feature-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3>Responsive Support</h3>
+          <p>Dedicated support team and community moderators to assist with technical questions and guidance.</p>
+        </div>
+        
+        <div class="feature-card fade-in delay-3">
+          <div class="feature-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3>Integrated Ecosystem</h3>
+          <p>Tools designed to work together seamlessly, creating a comprehensive cybersecurity workflow solution.</p>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="tool-card">
-        <h3>🌐 IP Tracker + Info Grabber</h3>
-        <p>Track IP addresses with geolocation, device fingerprinting, and more. Includes live preview and logging.</p>
+  <!-- Stats Section -->
+  <section id="stats" class="stats">
+    <div class="container stats-content">
+      <h2 class="section-title slide-in-right">By The Numbers</h2>
+      <p class="text-center slide-in-right delay-1">Quantifying our impact in the cybersecurity community</p>
+      
+      <div class="stats-grid">
+        <div class="stat-item fade-in">
+          <div class="stat-number" data-count="15000">0</div>
+          <div class="stat-label">Community Members</div>
+        </div>
+        <div class="stat-item fade-in delay-1">
+          <div class="stat-number" data-count="50">0</div>
+          <div class="stat-label">Security Tools</div>
+        </div>
+        <div class="stat-item fade-in delay-2">
+          <div class="stat-number" data-count="100">0</div>
+          <div class="stat-label">Educational Resources</div>
+        </div>
+        <div class="stat-item fade-in delay-3">
+          <div class="stat-number" data-count="5">0</div>
+          <div class="stat-label">Years of Excellence</div>
+        </div>
       </div>
+      
+      <!-- Skill Bars -->
+      <div class="skill-bars fade-in delay-2">
+        <h3 class="text-center mb-4">Our Expertise Areas</h3>
+        
+        <div class="skill-bar">
+          <div class="skill-info">
+            <span class="skill-name">Penetration Testing</span>
+            <span class="skill-percent">95%</span>
+          </div>
+          <div class="skill-progress">
+            <div class="skill-progress-bar" style="width: 95%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-bar">
+          <div class="skill-info">
+            <span class="skill-name">Vulnerability Research</span>
+            <span class="skill-percent">90%</span>
+          </div>
+          <div class="skill-progress">
+            <div class="skill-progress-bar" style="width: 90%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-bar">
+          <div class="skill-info">
+            <span class="skill-name">Digital Forensics</span>
+            <span class="skill-percent">85%</span>
+          </div>
+          <div class="skill-progress">
+            <div class="skill-progress-bar" style="width: 85%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-bar">
+          <div class="skill-info">
+            <span class="skill-name">Security Education</span>
+            <span class="skill-percent">92%</span>
+          </div>
+          <div class="skill-progress">
+            <div class="skill-progress-bar" style="width: 92%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Newsletter Section -->
+  <section id="contact" class="newsletter">
+    <div class="newsletter-container">
+      <h2 class="slide-in-left">Stay Ahead of Threats</h2>
+      <p class="slide-in-left delay-1">Subscribe to our newsletter for security updates, new releases, and exclusive content</p>
+      
+      <form class="newsletter-form slide-in-right delay-1">
+        <input type="email" class="newsletter-input" placeholder="Your professional email" required>
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    © 2025 CyberEmpireX | Built using GitHub Pages |
-    <a href="https://t.me/CyberEmpireXChat" target="_blank">Telegram Group</a>
+    <div class="container footer-content">
+      <a href="#" class="footer-logo">
+        <img src="https://i.ibb.co/r2Z4SLn9/Picsart-25-04-04-08-31-24-593.png" alt="CyberEmpireX Logo">
+        <span>CyberEmpireX</span>
+      </a>
+      
+      <div class="footer-about">
+        <p>Leading the way in ethical cybersecurity solutions since 2020. Our mission is to empower security professionals with cutting-edge tools and knowledge.</p>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://t.me/CyberEmpireXChat" target="_blank" class="social-link">
+          <i class="fab fa-telegram"></i>
+        </a>
+        <a href="https://github.com/CyberEmpireX" target="_blank" class="social-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fab fa-discord"></i>
+        </a>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 CyberEmpireX. All rights reserved. | Built with <i class="fas fa-heart" style="color: #ed8936;"></i> using GitHub Pages</p>
+      </div>
+    </div>
   </footer>
 
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.classList.remove('active');
+        }
+      });
+    });
+    
+    // Back to Top Button
+    const backToTop = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('active');
+      } else {
+        backToTop.classList.remove('active');
+      }
+    });
+    
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Animated Counter for Stats
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 200;
+    
+    function animateCounters() {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-count');
+        const count = +counter.innerText;
+        const increment = target / speed;
+        
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(animateCounters, 1);
+        } else {
+          counter.innerText = target;
+        }
+      });
+    }
+    
+    // Start counters when stats section is in view
+    const statsSection = document.querySelector('.stats');
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        animateCounters();
+        observer.unobserve(statsSection);
+      }
+    }, { threshold: 0.5 });
+    
+    observer.observe(statsSection);
+    
+    // Animate skill bars on scroll
+    const skillBars = document.querySelectorAll('.skill-progress-bar');
+    const skillsSection = document.querySelector('.skill-bars');
+    
+    const skillsObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        skillBars.forEach(bar => {
+          const width = bar.style.width;
+          bar.style.width = '0';
+          setTimeout(() => {
+            bar.style.width = width;
+          }, 100);
+        });
+        skillsObserver.unobserve(skillsSection);
+      }
+    }, { threshold: 0.5 });
+    
+    skillsObserver.observe(skillsSection);
+    
+    // Simple form submission handler
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input').value;
+      alert(`Thank you for subscribing with ${email}! You'll receive our next security update.`);
+      this.reset();
+    });
+  </script>
 </body>
-  </html>
+</html>
