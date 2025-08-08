@@ -1,0 +1,131 @@
+/* ==== CyberEmpireX Website Styles ==== */
+
+/* General Page Styles */
+body {
+  background-color: #0d0d0d;
+  color: #00ff99;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Header */
+header {
+  padding: 40px 10px 20px;
+  background-color: #111;
+  border-bottom: 2px solid #00ff99;
+}
+
+header h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px #00ff99;
+}
+
+header p {
+  font-size: 16px;
+  color: #ccc;
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 25px;
+}
+
+.buttons a {
+  display: inline-block;
+  background-color: #00ff99;
+  color: #000;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 10px;
+  transition: 0.3s ease;
+}
+
+.buttons a:hover {
+  background-color: #00cc77;
+  transform: scale(1.05);
+}
+
+/* Main Section */
+section {
+  padding: 40px 20px;
+}
+
+h2 {
+  font-size: 28px;
+  color: #00ffff;
+  margin-bottom: 30px;
+}
+
+/* Tool Cards */
+.tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.tool-card {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-left: 5px solid #00ff99;
+  text-align: left;
+  width: 100%;
+  box-shadow: 0 0 10px #00ff99;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.tool-card h3 {
+  margin: 0 0 10px;
+  color: #00ffff;
+}
+
+.tool-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.tool-card:hover {
+  background-color: #222;
+  transform: scale(1.02);
+  box-shadow: 0 0 15px #00ffff;
+}
+
+/* Footer */
+footer {
+  padding: 30px 10px;
+  background-color: #111;
+  font-size: 14px;
+  color: #aaa;
+  border-top: 1px solid #00ff99;
+}
+
+footer a {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  .tool-card {
+    padding: 15px;
+  }
+  }
