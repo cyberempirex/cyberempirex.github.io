@@ -6,12 +6,12 @@
   <title>CyberEmpireX - Advanced Cybersecurity Solutions</title>
 
   <!-- SEO & Meta -->
-  <meta name="description" content="Cutting-edge cybersecurity tools and comprehensive educational resources for ethical hackers and security professionals">
-  <meta name="keywords" content="CyberEmpireX, ethical hacking, cybersecurity, penetration testing, security research, digital forensics">
-  <meta name="author" content="CyberEmpireX Team">
-  <meta name="theme-color" content="#1a365d">
+  <meta name="description" content="Cutting-edge ethical hacking tools, cybersecurity resources, and professional training by CyberEmpireX">
+  <meta name="keywords" content="CyberEmpireX, ethical hacking, cybersecurity, penetration testing, red team, blue team">
+  <meta name="author" content="CyberEmpireX Security Team">
+  <meta name="theme-color" content="#0f172a">
   <meta property="og:title" content="CyberEmpireX - Advanced Cybersecurity Solutions">
-  <meta property="og:description" content="Professional-grade tools and resources for cybersecurity professionals and ethical hackers">
+  <meta property="og:description" content="Enterprise-grade security tools and resources for cybersecurity professionals">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cyberempirex.github.io">
 
@@ -21,29 +21,41 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Kanit:wght@600;700;800&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <!-- Styles -->
   <style>
     :root {
-      /* Professional Dark Blue Color Scheme */
-      --primary: #1a365d;
-      --primary-dark: #15315a;
-      --primary-light: #2c5282;
-      --secondary: #38b2ac;
-      --secondary-dark: #319795;
-      --accent: #ed8936;
-      --accent-dark: #dd6b20;
-      --text: #f7fafc;
-      --text-light: #e2e8f0;
-      --text-lighter: #cbd5e0;
-      --bg: #1a202c;
-      --bg-dark: #2d3748;
-      --card-bg: #2d3748;
-      --border: #4a5568;
+      /* Cyberpunk/Professional Color Scheme */
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --primary-darker: #1d4ed8;
+      --primary-light: #60a5fa;
+      --secondary: #10b981;
+      --secondary-dark: #059669;
+      --accent: #f59e0b;
+      --accent-dark: #d97706;
+      --danger: #ef4444;
+      --danger-dark: #dc2626;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f8fafc;
+      --lighter: #f1f5f9;
+      --text: #e2e8f0;
+      --text-light: #94a3b8;
+      --text-lighter: #64748b;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --success: #22c55e;
     }
 
     /* Base Styles */
@@ -59,17 +71,32 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
+      background-color: var(--darker);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.15) 0%, transparent 25%),
+        linear-gradient(to bottom, var(--darker), var(--darker));
+      z-index: -1;
     }
 
     h1, h2, h3, h4, h5, h6 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      line-height: 1.3;
-      margin-bottom: 1rem;
+      font-family: 'Kanit', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
     }
 
     code, pre {
@@ -78,13 +105,12 @@
 
     a {
       text-decoration: none;
-      color: var(--secondary);
-      transition: all 0.3s ease;
+      color: var(--primary-light);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     a:hover {
-      color: var(--secondary-dark);
-      text-shadow: 0 0 8px rgba(56, 178, 172, 0.4);
+      color: var(--primary);
     }
 
     img {
@@ -94,82 +120,90 @@
 
     .container {
       width: 100%;
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
     }
 
     .btn {
-      display: inline-block;
-      padding: 0.8rem 1.8rem;
-      border-radius: 0.375rem;
-      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
       text-align: center;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       border: none;
       font-size: 1rem;
       position: relative;
       overflow: hidden;
+      z-index: 1;
     }
 
-    .btn::after {
+    .btn::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
+      width: 0;
       height: 100%;
-      background: linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.1) 50%, transparent 75%);
-      background-size: 400% 400%;
-      opacity: 0;
-      transition: all 0.6s ease;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      z-index: -1;
     }
 
-    .btn:hover::after {
-      opacity: 1;
-      animation: shine 1.5s infinite;
-    }
-
-    @keyframes shine {
-      0% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .btn:hover::before {
+      width: 100%;
     }
 
     .btn-primary {
-      background-color: var(--primary-light);
+      background-color: var(--primary);
       color: white;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
     }
 
     .btn-primary:hover {
-      background-color: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
     }
 
     .btn-secondary {
       background-color: var(--secondary);
       color: white;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
     }
 
     .btn-secondary:hover {
       background-color: var(--secondary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
     }
 
     .btn-accent {
       background-color: var(--accent);
       color: white;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
     }
 
     .btn-accent:hover {
       background-color: var(--accent-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: white;
     }
 
     .text-center {
@@ -177,7 +211,7 @@
     }
 
     .text-primary {
-      color: var(--primary-light);
+      color: var(--primary);
     }
 
     .text-secondary {
@@ -201,40 +235,45 @@
     }
 
     .section {
-      padding: 5rem 0;
-      position: relative;
+      padding: 6rem 0;
     }
 
     .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
+      font-size: 2.75rem;
+      margin-bottom: 2.5rem;
       position: relative;
       display: inline-block;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -10px;
+      bottom: -12px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
+      width: 100px;
       height: 4px;
-      background: var(--secondary);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       border-radius: 2px;
     }
 
     /* Header Styles */
     header {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       color: white;
-      padding: 1rem 0;
+      padding: 1.25rem 0;
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .header-container {
@@ -246,14 +285,14 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      font-size: 1.5rem;
-      font-weight: 700;
+      gap: 1rem;
+      font-size: 1.75rem;
+      font-weight: 800;
     }
 
     .logo img {
-      height: 40px;
-      transition: all 0.3s ease;
+      height: 50px;
+      transition: transform 0.3s ease;
     }
 
     .logo:hover img {
@@ -262,25 +301,25 @@
 
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
     }
 
     .nav-links a {
-      color: white;
+      color: var(--text);
       font-weight: 500;
       position: relative;
-      padding: 0.5rem 0;
+      font-size: 1.05rem;
     }
 
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: -8px;
       left: 0;
       width: 0;
-      height: 2px;
-      background-color: var(--secondary);
-      transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .nav-links a:hover::after {
@@ -292,14 +331,14 @@
       background: none;
       border: none;
       color: white;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       cursor: pointer;
+      z-index: 1001;
     }
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: white;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(2, 6, 23, 0.98) 100%);
       padding: 12rem 0 8rem;
       text-align: center;
       position: relative;
@@ -309,172 +348,78 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('assets/cyber-grid.png') center/cover;
-      opacity: 0.1;
-      z-index: 0;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 70% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 20%);
+      animation: rotate 30s linear infinite;
+      z-index: -1;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .hero h1 {
-      font-size: 3.5rem;
+      font-size: 4rem;
       margin-bottom: 1.5rem;
-      line-height: 1.2;
+      line-height: 1.1;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     .hero p {
-      font-size: 1.25rem;
-      max-width: 700px;
-      margin: 0 auto 2.5rem;
-      opacity: 0.9;
+      font-size: 1.35rem;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      color: var(--text-light);
     }
 
     .hero-buttons {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       justify-content: center;
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
 
-    /* Animated Circles in Hero */
-    .hero-circles {
+    /* Features Section */
+    .features {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .features::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .hero-circles li {
-      position: absolute;
-      display: block;
-      list-style: none;
-      width: 20px;
-      height: 20px;
-      background: rgba(56, 178, 172, 0.2);
-      animation: float 25s linear infinite;
-      bottom: -150px;
-      border-radius: 50%;
-    }
-
-    .hero-circles li:nth-child(1) {
-      left: 25%;
-      width: 80px;
-      height: 80px;
-      animation-delay: 0s;
-    }
-
-    .hero-circles li:nth-child(2) {
-      left: 10%;
-      width: 20px;
-      height: 20px;
-      animation-delay: 2s;
-      animation-duration: 12s;
-    }
-
-    .hero-circles li:nth-child(3) {
-      left: 70%;
-      width: 20px;
-      height: 20px;
-      animation-delay: 4s;
-    }
-
-    .hero-circles li:nth-child(4) {
-      left: 40%;
-      width: 60px;
-      height: 60px;
-      animation-delay: 0s;
-      animation-duration: 18s;
-    }
-
-    .hero-circles li:nth-child(5) {
-      left: 65%;
-      width: 20px;
-      height: 20px;
-      animation-delay: 0s;
-    }
-
-    .hero-circles li:nth-child(6) {
-      left: 75%;
-      width: 110px;
-      height: 110px;
-      animation-delay: 3s;
-    }
-
-    .hero-circles li:nth-child(7) {
-      left: 35%;
-      width: 150px;
-      height: 150px;
-      animation-delay: 7s;
-    }
-
-    .hero-circles li:nth-child(8) {
-      left: 50%;
-      width: 25px;
-      height: 25px;
-      animation-delay: 15s;
-      animation-duration: 45s;
-    }
-
-    .hero-circles li:nth-child(9) {
-      left: 20%;
-      width: 15px;
-      height: 15px;
-      animation-delay: 2s;
-      animation-duration: 35s;
-    }
-
-    .hero-circles li:nth-child(10) {
-      left: 85%;
-      width: 150px;
-      height: 150px;
-      animation-delay: 0s;
-      animation-duration: 11s;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-        border-radius: 0;
-      }
-      100% {
-        transform: translateY(-1000px) rotate(720deg);
-        opacity: 0;
-        border-radius: 50%;
-      }
-    }
-
-    /* Features Section */
-    .features {
-      background-color: var(--bg-dark);
+      background: 
+        radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 25%),
+        radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 25%);
+      z-index: -1;
     }
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 4rem;
     }
 
     .feature-card {
-      background-color: var(--card-bg);
-      border-radius: 0.5rem;
-      padding: 2rem;
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      text-align: center;
-      border: 1px solid var(--border);
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       position: relative;
       overflow: hidden;
     }
@@ -484,31 +429,66 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--secondary));
+      transition: width 0.4s ease;
+    }
+
+    .feature-card:hover::before {
+      width: 8px;
     }
 
     .feature-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      border-color: rgba(59, 130, 246, 0.3);
     }
 
     .feature-icon {
-      font-size: 2.5rem;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
       margin-bottom: 1.5rem;
-      color: var(--secondary);
-      background: linear-gradient(135deg, var(--secondary), var(--accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      position: relative;
       display: inline-block;
     }
 
-    /* Stats Section with Animated Bars */
+    .feature-card h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+
+    .feature-card:hover h3::after {
+      width: 60px;
+    }
+
+    .feature-card p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Stats Section */
     .stats {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      background: linear-gradient(135deg, var(--primary-darker) 0%, var(--dark) 100%);
       color: white;
-      padding: 4rem 0;
+      padding: 6rem 0;
       position: relative;
       overflow: hidden;
     }
@@ -520,55 +500,54 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('assets/dots-pattern.png') center/cover;
-      opacity: 0.1;
-      z-index: 0;
-    }
-
-    .stats-content {
-      position: relative;
-      z-index: 1;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+      background-size: 50px 50px;
+      opacity: 0.3;
     }
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
       text-align: center;
     }
 
     .stat-item {
-      padding: 1.5rem;
+      padding: 2rem;
       background: rgba(255, 255, 255, 0.05);
-      border-radius: 0.5rem;
+      border-radius: 1rem;
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
     }
 
     .stat-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
     .stat-number {
-      font-size: 3rem;
-      font-weight: 700;
+      font-size: 3.5rem;
+      font-weight: 800;
       margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      background: linear-gradient(90deg, white, var(--text-light));
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
     }
 
     .stat-label {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       opacity: 0.9;
+      font-weight: 500;
     }
 
-    /* Skill Bars */
-    .skill-bars {
+    /* Skills Graph */
+    .skills-graph {
+      margin: 5rem auto;
       max-width: 800px;
-      margin: 3rem auto 0;
     }
 
     .skill-bar {
@@ -582,11 +561,11 @@
     }
 
     .skill-name {
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .skill-percent {
-      color: var(--secondary);
+      color: var(--text-light);
     }
 
     .skill-progress {
@@ -594,176 +573,226 @@
       background: rgba(255, 255, 255, 0.1);
       border-radius: 5px;
       overflow: hidden;
-      position: relative;
     }
 
     .skill-progress-bar {
       height: 100%;
-      background: linear-gradient(90deg, var(--secondary), var(--accent));
       border-radius: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       position: relative;
-      width: 0;
-      transition: width 1.5s ease-out;
+      transition: width 1.5s ease;
     }
 
-    /* Newsletter */
-    .newsletter {
-      background-color: var(--bg-dark);
-      padding: 4rem 0;
-    }
-
-    .newsletter-container {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .newsletter-form {
-      display: flex;
-      max-width: 500px;
-      margin: 2rem auto 0;
-      background: var(--card-bg);
-      border-radius: 0.5rem;
-      overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .newsletter-input {
-      flex: 1;
-      padding: 1rem;
-      border: none;
-      background: transparent;
-      color: var(--text);
-      font-size: 1rem;
-    }
-
-    .newsletter-input:focus {
-      outline: none;
-    }
-
-    .newsletter-btn {
-      padding: 0 1.5rem;
-      background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .newsletter-btn:hover {
-      background: linear-gradient(135deg, var(--secondary-dark), var(--secondary));
-    }
-
-    /* Footer */
-    footer {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: white;
-      padding: 4rem 0 2rem;
-      position: relative;
-    }
-
-    footer::before {
+    .skill-progress-bar::after {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 10px;
-      background: linear-gradient(90deg, var(--secondary), var(--accent));
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, 
+        rgba(255,255,255,0.1) 0%, 
+        rgba(255,255,255,0.3) 50%, 
+        rgba(255,255,255,0.1) 100%);
+      animation: shine 2s infinite;
     }
 
-    .footer-content {
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Newsletter */
+    .newsletter {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 70% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 30% 70%, rgba(16, 185, 129, 0.05) 0%, transparent 20%);
+      animation: rotate 40s linear infinite;
+      z-index: 0;
+    }
+
+    .newsletter-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 600px;
+      margin: 3rem auto 0;
+      position: relative;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 1.2rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1.1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+
+    .newsletter-input::placeholder {
+      color: var(--text-light);
+    }
+
+    .newsletter-btn {
+      padding: 0 2rem;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-left: 1rem;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    }
+
+    .newsletter-btn:hover {
+      background: linear-gradient(90deg, var(--primary-dark), var(--primary-darker));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--darker);
+      color: white;
+      padding: 6rem 0 3rem;
+      position: relative;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
     }
 
     .footer-logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 1rem;
     }
 
     .footer-logo img {
-      height: 40px;
+      height: 50px;
     }
 
     .footer-about {
       max-width: 600px;
-      margin: 0 auto 2rem;
+      text-align: center;
+      margin-bottom: 3rem;
     }
 
     .footer-about p {
-      margin-bottom: 1.5rem;
-      opacity: 0.8;
+      margin-bottom: 2rem;
+      color: var(--text-light);
       line-height: 1.8;
     }
 
     .social-links {
       display: flex;
-      gap: 1rem;
-      margin-bottom: 2rem;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
     }
 
     .social-link {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       color: white;
       transition: all 0.3s ease;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .social-link:hover::before {
+      opacity: 1;
+    }
+
+    .social-link i {
+      position: relative;
+      z-index: 1;
     }
 
     .social-link:hover {
-      background-color: var(--secondary);
-      transform: translateY(-3px) scale(1.1);
-      box-shadow: 0 5px 15px rgba(56, 178, 172, 0.3);
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       padding-top: 2rem;
       text-align: center;
-      opacity: 0.7;
-      font-size: 0.875rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
       width: 100%;
     }
 
     /* Responsive Styles */
-    @media (max-width: 992px) {
+    @media (max-width: 1200px) {
       .hero h1 {
-        font-size: 2.8rem;
+        font-size: 3.5rem;
       }
       
       .section-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
       .nav-links {
         display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: var(--primary-dark);
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem 0;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-      }
-      
-      .nav-links.active {
-        display: flex;
       }
       
       .mobile-menu-btn {
@@ -771,24 +800,52 @@
       }
       
       .hero {
-        padding: 9rem 0 5rem;
+        padding: 10rem 0 6rem;
+      }
+      
+      .hero h1 {
+        font-size: 3rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      
+      .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
       }
       
       .hero h1 {
         font-size: 2.5rem;
       }
       
-      .hero p {
-        font-size: 1.1rem;
+      .section {
+        padding: 4rem 0;
       }
       
-      .hero-buttons {
-        flex-direction: column;
-        gap: 1rem;
+      .section-title {
+        font-size: 2.2rem;
       }
       
-      .btn {
-        width: 100%;
+      .stat-number {
+        font-size: 3rem;
       }
       
       .newsletter-form {
@@ -796,13 +853,15 @@
       }
       
       .newsletter-input {
-        border-radius: 0.5rem 0.5rem 0 0;
-        margin-bottom: 0;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
       }
       
       .newsletter-btn {
-        border-radius: 0 0 0.5rem 0.5rem;
-        padding: 1rem;
+        border-radius: 0.5rem;
+        padding: 1.2rem;
+        margin-left: 0;
+        width: 100%;
       }
     }
 
@@ -811,12 +870,16 @@
         font-size: 2.2rem;
       }
       
-      .section {
-        padding: 3rem 0;
+      .hero p {
+        font-size: 1.1rem;
       }
       
       .section-title {
-        font-size: 1.75rem;
+        font-size: 2rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
       }
       
       .stat-number {
@@ -825,43 +888,21 @@
     }
 
     /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
 
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-50px); }
-      to { opacity: 1; transform: translateX(0); }
+    .floating {
+      animation: float 6s ease-in-out infinite;
     }
 
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(50px); }
-      to { opacity: 1; transform: translateX(0); }
+    .floating-slow {
+      animation: float 8s ease-in-out infinite;
     }
 
-    .fade-in {
-      animation: fadeIn 1s ease forwards;
-    }
-
-    .slide-in-left {
-      animation: slideInLeft 1s ease forwards;
-    }
-
-    .slide-in-right {
-      animation: slideInRight 1s ease forwards;
-    }
-
-    .delay-1 {
-      animation-delay: 0.2s;
-    }
-
-    .delay-2 {
-      animation-delay: 0.4s;
-    }
-
-    .delay-3 {
-      animation-delay: 0.6s;
+    .floating-fast {
+      animation: float 4s ease-in-out infinite;
     }
 
     /* Back to Top Button */
@@ -869,20 +910,22 @@
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      font-size: 1.5rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
       z-index: 999;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.4s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      cursor: pointer;
     }
 
     .back-to-top.active {
@@ -892,11 +935,43 @@
 
     .back-to-top:hover {
       transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 6px 20px rgba(56, 178, 172, 0.3);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Particles */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: float-particle linear infinite;
+    }
+
+    @keyframes float-particle {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1000px) translateX(200px);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Particles Background -->
+  <div class="particles" id="particles"></div>
+
   <!-- Header -->
   <header>
     <div class="container header-container">
@@ -908,7 +983,8 @@
       <nav class="nav-links">
         <a href="#home">Home</a>
         <a href="#features">Advantages</a>
-        <a href="#stats">Stats</a>
+        <a href="#skills">Capabilities</a>
+        <a href="#stats">Metrics</a>
         <a href="#contact">Contact</a>
       </nav>
       
@@ -920,29 +996,19 @@
 
   <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="hero-circles">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </div>
-    
-    <div class="container hero-content">
-      <h1 class="fade-in">Advanced Cybersecurity Solutions</h1>
-      <p class="fade-in delay-1">Professional-grade tools and comprehensive educational content for ethical hackers, penetration testers, and security researchers to enhance digital defense capabilities</p>
+    <div class="container">
+      <h1 class="animate__animated animate__fadeInDown" data-aos="fade-down" data-aos-duration="800">Enterprise-Grade Cybersecurity Solutions</h1>
+      <p class="animate__animated animate__fadeIn animate__delay-1s" data-aos="fade-up" data-aos-delay="300" data-aos-duration="800">
+        Cutting-edge professional tools, comprehensive training programs, and elite resources for ethical hackers, 
+        penetration testers, and security researchers to fortify digital infrastructures against evolving threats.
+      </p>
       
-      <div class="hero-buttons fade-in delay-2">
-        <a href="#features" class="btn btn-secondary">
-          <i class="fas fa-star"></i> Our Advantages
+      <div class="hero-buttons">
+        <a href="https://t.me/CyberEmpireXChat" target="_blank" class="btn btn-secondary animate__animated animate__fadeInUp animate__delay-1s" data-aos="fade-up" data-aos-delay="400">
+          <i class="fab fa-telegram"></i> Join Elite Community
         </a>
-        <a href="https://t.me/CyberEmpireXChat" target="_blank" class="btn btn-accent">
-          <i class="fab fa-telegram"></i> Join Community
+        <a href="#features" class="btn btn-accent animate__animated animate__fadeInUp animate__delay-1s" data-aos="fade-up" data-aos-delay="500">
+          <i class="fas fa-shield-alt"></i> Explore Advantages
         </a>
       </div>
     </div>
@@ -951,93 +1017,169 @@
   <!-- Features Section -->
   <section id="features" class="section features">
     <div class="container">
-      <h2 class="section-title slide-in-left">Our Competitive Advantages</h2>
-      <p class="text-center slide-in-left delay-1">What sets CyberEmpireX apart in the cybersecurity landscape</p>
+      <h2 class="section-title" data-aos="fade-up">Our Strategic Advantages</h2>
+      <p class="text-center" data-aos="fade-up" data-aos-delay="100">
+        Why security professionals and enterprises trust CyberEmpireX for their critical cybersecurity needs
+      </p>
       
       <div class="features-grid">
-        <div class="feature-card fade-in">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
           <div class="feature-icon">
-            <i class="fas fa-shield-alt"></i>
+            <i class="fas fa-lock"></i>
           </div>
-          <h3>Advanced Security Protocols</h3>
-          <p>Our tools incorporate cutting-edge security measures and follow strict ethical guidelines to ensure responsible usage.</p>
+          <h3>Military-Grade Security</h3>
+          <p>
+            Our resources are engineered with NSA-grade security protocols, implementing zero-trust architectures 
+            and end-to-end encryption following strict ethical guidelines and compliance standards.
+          </p>
+          <div class="skills-graph">
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span class="skill-name">Encryption</span>
+                <span class="skill-percent">98%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="skill-progress-bar" style="width: 98%"></div>
+              </div>
+            </div>
+          </div>
         </div>
         
-        <div class="feature-card fade-in delay-1">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
           <div class="feature-icon">
-            <i class="fas fa-graduation-cap"></i>
+            <i class="fas fa-book"></i>
           </div>
-          <h3>Comprehensive Education</h3>
-          <p>Detailed tutorials, documentation, and real-world case studies to accelerate your cybersecurity learning curve.</p>
+          <h3>Comprehensive Documentation</h3>
+          <p>
+            Detailed technical documentation with real-world case studies, API references, and interactive tutorials 
+            for every tool we provide, ensuring rapid onboarding and mastery.
+          </p>
+          <div class="skills-graph">
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span class="skill-name">Documentation</span>
+                <span class="skill-percent">95%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="skill-progress-bar" style="width: 95%"></div>
+              </div>
+            </div>
+          </div>
         </div>
         
-        <div class="feature-card fade-in delay-2">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
           <div class="feature-icon">
             <i class="fas fa-users"></i>
           </div>
-          <h3>Expert Community</h3>
-          <p>Connect with thousands of security professionals and enthusiasts in our active, knowledge-sharing community.</p>
-        </div>
-        
-        <div class="feature-card fade-in delay-1">
-          <div class="feature-icon">
-            <i class="fas fa-code"></i>
+          <h3>Elite Community Network</h3>
+          <p>
+            Collaborate with 10,000+ verified security professionals, including Fortune 500 security teams and 
+            government cybersecurity experts in our exclusive community.
+          </p>
+          <div class="skills-graph">
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span class="skill-name">Community</span>
+                <span class="skill-percent">100%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="skill-progress-bar" style="width: 100%"></div>
+              </div>
+            </div>
           </div>
-          <h3>Cutting-Edge Technology</h3>
-          <p>Regularly updated tools leveraging the latest advancements in cybersecurity research and development.</p>
         </div>
-        
-        <div class="feature-card fade-in delay-2">
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
           <div class="feature-icon">
-            <i class="fas fa-headset"></i>
+            <i class="fas fa-bolt"></i>
           </div>
-          <h3>Responsive Support</h3>
-          <p>Dedicated support team and community moderators to assist with technical questions and guidance.</p>
+          <h3>Real-Time Threat Intelligence</h3>
+          <p>
+            Continuous updates with real-time threat feeds, vulnerability databases, and automated patching 
+            systems to stay ahead of emerging security threats.
+          </p>
+          <div class="skills-graph">
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span class="skill-name">Response Time</span>
+                <span class="skill-percent">24h</span>
+              </div>
+              <div class="skill-progress">
+                <div class="skill-progress-bar" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
         </div>
         
-        <div class="feature-card fade-in delay-3">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
           <div class="feature-icon">
             <i class="fas fa-project-diagram"></i>
           </div>
-          <h3>Integrated Ecosystem</h3>
-          <p>Tools designed to work together seamlessly, creating a comprehensive cybersecurity workflow solution.</p>
+          <h3>Advanced Automation</h3>
+          <p>
+            AI-driven security automation with machine learning algorithms for anomaly detection, behavioral 
+            analysis, and predictive threat modeling.
+          </p>
+          <div class="skills-graph">
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span class="skill-name">Automation</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-progress">
+                <div class="skill-progress-bar" style="width: 90%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="feature-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>Certified Training Programs</h3>
+          <p>
+            Industry-recognized certification programs with hands-on labs covering offensive security, 
+            cloud security, IoT security, and blockchain security.
+          </p>
+          <div class="skills-graph">
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span class="skill-name">Certifications</span>
+                <span class="skill-percent">15+</span>
+              </div>
+              <div class="skill-progress">
+                <div class="skill-progress-bar" style="width: 100%"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Stats Section -->
-  <section id="stats" class="stats">
-    <div class="container stats-content">
-      <h2 class="section-title slide-in-right">By The Numbers</h2>
-      <p class="text-center slide-in-right delay-1">Quantifying our impact in the cybersecurity community</p>
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Our Core Capabilities</h2>
+      <p class="text-center" data-aos="fade-up" data-aos-delay="100">
+        Comprehensive security expertise across all critical domains
+      </p>
       
-      <div class="stats-grid">
-        <div class="stat-item fade-in">
-          <div class="stat-number" data-count="15000">0</div>
-          <div class="stat-label">Community Members</div>
-        </div>
-        <div class="stat-item fade-in delay-1">
-          <div class="stat-number" data-count="50">0</div>
-          <div class="stat-label">Security Tools</div>
-        </div>
-        <div class="stat-item fade-in delay-2">
-          <div class="stat-number" data-count="100">0</div>
-          <div class="stat-label">Educational Resources</div>
-        </div>
-        <div class="stat-item fade-in delay-3">
-          <div class="stat-number" data-count="5">0</div>
-          <div class="stat-label">Years of Excellence</div>
-        </div>
-      </div>
-      
-      <!-- Skill Bars -->
-      <div class="skill-bars fade-in delay-2">
-        <h3 class="text-center mb-4">Our Expertise Areas</h3>
-        
+      <div class="skills-graph" data-aos="fade-up" data-aos-delay="200">
         <div class="skill-bar">
           <div class="skill-info">
             <span class="skill-name">Penetration Testing</span>
+            <span class="skill-percent">98%</span>
+          </div>
+          <div class="skill-progress">
+            <div class="skill-progress-bar" style="width: 98%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-bar">
+          <div class="skill-info">
+            <span class="skill-name">Threat Intelligence</span>
             <span class="skill-percent">95%</span>
           </div>
           <div class="skill-progress">
@@ -1047,7 +1189,17 @@
         
         <div class="skill-bar">
           <div class="skill-info">
-            <span class="skill-name">Vulnerability Research</span>
+            <span class="skill-name">Incident Response</span>
+            <span class="skill-percent">92%</span>
+          </div>
+          <div class="skill-progress">
+            <div class="skill-progress-bar" style="width: 92%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-bar">
+          <div class="skill-info">
+            <span class="skill-name">Cloud Security</span>
             <span class="skill-percent">90%</span>
           </div>
           <div class="skill-progress">
@@ -1057,22 +1209,36 @@
         
         <div class="skill-bar">
           <div class="skill-info">
-            <span class="skill-name">Digital Forensics</span>
-            <span class="skill-percent">85%</span>
+            <span class="skill-name">Forensic Analysis</span>
+            <span class="skill-percent">88%</span>
           </div>
           <div class="skill-progress">
-            <div class="skill-progress-bar" style="width: 85%"></div>
+            <div class="skill-progress-bar" style="width: 88%"></div>
           </div>
         </div>
-        
-        <div class="skill-bar">
-          <div class="skill-info">
-            <span class="skill-name">Security Education</span>
-            <span class="skill-percent">92%</span>
-          </div>
-          <div class="skill-progress">
-            <div class="skill-progress-bar" style="width: 92%"></div>
-          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section id="stats" class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-number">15K+</div>
+          <div class="stat-label">Security Professionals</div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-number">200+</div>
+          <div class="stat-label">Enterprise Tools</div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+          <div class="stat-number">7+</div>
+          <div class="stat-label">Years in Operation</div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="500">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Ethical Compliance</div>
         </div>
       </div>
     </div>
@@ -1081,72 +1247,69 @@
   <!-- Newsletter Section -->
   <section id="contact" class="newsletter">
     <div class="newsletter-container">
-      <h2 class="slide-in-left">Stay Ahead of Threats</h2>
-      <p class="slide-in-left delay-1">Subscribe to our newsletter for security updates, new releases, and exclusive content</p>
+      <h2 data-aos="fade-up">Join Our Security Network</h2>
+      <p data-aos="fade-up" data-aos-delay="100">
+        Subscribe for exclusive tool releases, zero-day alerts, and advanced security research
+      </p>
       
-      <form class="newsletter-form slide-in-right delay-1">
+      <form class="newsletter-form" data-aos="fade-up" data-aos-delay="200">
         <input type="email" class="newsletter-input" placeholder="Your professional email" required>
-        <button type="submit" class="newsletter-btn">Subscribe</button>
+        <button type="submit" class="newsletter-btn">Get Security Updates</button>
       </form>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div class="container footer-content">
+    <div class="container footer-container">
       <a href="#" class="footer-logo">
         <img src="https://i.ibb.co/r2Z4SLn9/Picsart-25-04-04-08-31-24-593.png" alt="CyberEmpireX Logo">
         <span>CyberEmpireX</span>
       </a>
       
       <div class="footer-about">
-        <p>Leading the way in ethical cybersecurity solutions since 2020. Our mission is to empower security professionals with cutting-edge tools and knowledge.</p>
-      </div>
-      
-      <div class="social-links">
-        <a href="https://t.me/CyberEmpireXChat" target="_blank" class="social-link">
-          <i class="fab fa-telegram"></i>
-        </a>
-        <a href="https://github.com/CyberEmpireX" target="_blank" class="social-link">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="#" class="social-link">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#" class="social-link">
-          <i class="fab fa-discord"></i>
-        </a>
+        <p>
+          CyberEmpireX is a premier cybersecurity collective providing cutting-edge tools, training, 
+          and threat intelligence to security professionals worldwide since 2018.
+        </p>
+        <div class="social-links">
+          <a href="https://t.me/CyberEmpireXChat" target="_blank" class="social-link">
+            <i class="fab fa-telegram"></i>
+          </a>
+          <a href="https://github.com/CyberEmpireX" target="_blank" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
       
       <div class="footer-bottom">
-        <p>&copy; 2025 CyberEmpireX. All rights reserved. | Built with <i class="fas fa-heart" style="color: #ed8936;"></i> using GitHub Pages</p>
+        <p>&copy; 2025 CyberEmpireX. All rights reserved. | Secured with <i class="fas fa-heart" style="color: var(--danger);"></i> by our security team</p>
       </div>
     </div>
   </footer>
 
   <!-- Back to Top Button -->
-  <a href="#" class="back-to-top">
+  <button class="back-to-top">
     <i class="fas fa-arrow-up"></i>
-  </a>
+  </button>
+
+  <!-- AOS Animation -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <script>
-    // Mobile Menu Toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    
-    mobileMenuBtn.addEventListener('click', function() {
-      navLinks.classList.toggle('active');
+    // Initialize AOS animation
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out-quad'
     });
-    
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          navLinks.classList.remove('active');
-        }
-      });
-    });
-    
+
     // Back to Top Button
     const backToTop = document.querySelector('.back-to-top');
     
@@ -1163,61 +1326,95 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     
-    // Animated Counter for Stats
-    const counters = document.querySelectorAll('.stat-number');
-    const speed = 200;
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
     
-    function animateCounters() {
-      counters.forEach(counter => {
-        const target = +counter.getAttribute('data-count');
-        const count = +counter.innerText;
-        const increment = target / speed;
-        
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(animateCounters, 1);
-        } else {
-          counter.innerText = target;
+    mobileMenuBtn.addEventListener('click', function() {
+      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 992) {
+          navLinks.style.display = 'none';
         }
+      });
+    });
+    
+    // Form submission handler
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const email = this.querySelector('input').value;
+  const botToken = '8093668910:AAFW46mPqdkKPNqg-6OhsVif0drb_x3Xfls'; // Your Bot Token
+  const chatId = '-5227142529'; // Your Chat ID
+
+  fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=🚀 NEW WEBSITE SUBSCRIBER:\n\n📧 Email: ${email}\n⏰ Time: ${new Date().toLocaleString()}`)
+    .then(() => {
+      alert("✅ Thank you! You'll receive updates soon.");
+    })
+    .catch(() => {
+      alert("❌ Failed to send. Please try again later.");
+    });
+
+  this.reset(); // Clear the form
+});
+      
+
+    // Create particles
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      
+      // Random properties
+      const size = Math.random() * 5 + 1;
+      const posX = Math.random() * window.innerWidth;
+      const posY = Math.random() * window.innerHeight;
+      const duration = Math.random() * 20 + 10;
+      const delay = Math.random() * 5;
+      const opacity = Math.random() * 0.5 + 0.1;
+      
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${posX}px`;
+      particle.style.top = `${posY}px`;
+      particle.style.animationDuration = `${duration}s`;
+      particle.style.animationDelay = `${delay}s`;
+      particle.style.opacity = opacity;
+      
+      particlesContainer.appendChild(particle);
+    }
+
+    // Animate skill bars on scroll
+    const skillBars = document.querySelectorAll('.skill-progress-bar');
+    
+    function animateSkillBars() {
+      skillBars.forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        
+        setTimeout(() => {
+          bar.style.width = width;
+        }, 100);
       });
     }
     
-    // Start counters when stats section is in view
-    const statsSection = document.querySelector('.stats');
+    // Intersection Observer for skill bars
     const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        animateCounters();
-        observer.unobserve(statsSection);
-      }
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateSkillBars();
+          observer.unobserve(entry.target);
+        }
+      });
     }, { threshold: 0.5 });
     
-    observer.observe(statsSection);
-    
-    // Animate skill bars on scroll
-    const skillBars = document.querySelectorAll('.skill-progress-bar');
-    const skillsSection = document.querySelector('.skill-bars');
-    
-    const skillsObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        skillBars.forEach(bar => {
-          const width = bar.style.width;
-          bar.style.width = '0';
-          setTimeout(() => {
-            bar.style.width = width;
-          }, 100);
-        });
-        skillsObserver.unobserve(skillsSection);
-      }
-    }, { threshold: 0.5 });
-    
-    skillsObserver.observe(skillsSection);
-    
-    // Simple form submission handler
-    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = this.querySelector('input').value;
-      alert(`Thank you for subscribing with ${email}! You'll receive our next security update.`);
-      this.reset();
+    document.querySelectorAll('.skills-graph').forEach(graph => {
+      observer.observe(graph);
     });
   </script>
 </body>
